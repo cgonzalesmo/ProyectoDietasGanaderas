@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     Connection con;
-    private String driver = "com.mysql.jdbc.Driver";
-    private String cadenaConexion ="jdbc:mysql://127.0.0.1/dietas";
+    private String driver = "com.mysql.cj.jdbc.Driver";
+    private String cadenaConexion ="jdbc:mysql://localhost:3306/dietas?useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String usuario ="root";
     private String clave = "";
     
