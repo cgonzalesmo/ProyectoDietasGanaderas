@@ -63,6 +63,8 @@ public class Nutriente1 extends javax.swing.JFrame {
         txtNutOtros = new javax.swing.JTextArea();
         jLabel12 = new javax.swing.JLabel();
         txtNutEst = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtNutEstFis = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaNutriente = new javax.swing.JTable();
@@ -86,17 +88,17 @@ public class Nutriente1 extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
 
-        jLabel2.setText("Nombre  :");
+        jLabel2.setText("Nombre         :");
 
         jLabel8.setText("Magnitud      :");
 
-        jLabel11.setText("Otros     :");
+        jLabel11.setText("Otros             :");
 
         txtNutOtros.setColumns(20);
         txtNutOtros.setRows(5);
         jScrollPane2.setViewportView(txtNutOtros);
 
-        jLabel12.setText("Estado         :");
+        jLabel12.setText("Estado          :");
 
         txtNutEst.setText("A");
         txtNutEst.addActionListener(new java.awt.event.ActionListener() {
@@ -105,10 +107,13 @@ public class Nutriente1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("Estado Fisico :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,18 +121,22 @@ public class Nutriente1 extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(txtNutNom, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(txtNutMag, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNutEstFis, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addGap(19, 19, 19)
-                        .addComponent(txtNutEst, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNutEst, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,13 +150,15 @@ public class Nutriente1 extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addComponent(txtNutMag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtNutEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtNutEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtNutEstFis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2))
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,7 +169,7 @@ public class Nutriente1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NutNom", "NutMag", "NutEst", "NutOd"
+                "NutNom", "NutMag", "NutEstFis", "NutOd", "NutEstado"
             }
         ));
         tablaNutriente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -362,6 +373,7 @@ public class Nutriente1 extends javax.swing.JFrame {
             txtAnimAnio.setEditable(true);
             txtAnimUtil.setEditable(true);
             txtAnimProd.setEditable(true);*/
+            txtNutEstFis.setEditable(true);
             txtNutOtros.setEditable(true);
             txtNutEst.setEditable(true);
             opcion=1;
@@ -374,11 +386,13 @@ public class Nutriente1 extends javax.swing.JFrame {
             if(fila>=0){
                 txtNutNom.setText(tablaNutriente.getValueAt(fila,0).toString());
                 txtNutMag.setText(tablaNutriente.getValueAt(fila,1).toString());
-                txtNutOtros.setText(tablaNutriente.getValueAt(fila,2).toString());
+                txtNutEstFis.setText(tablaNutriente.getValueAt(fila,2).toString());
                 txtNutOtros.setText(tablaNutriente.getValueAt(fila,3).toString());
+                txtNutEst.setText(tablaNutriente.getValueAt(fila,4).toString());
                 opcion=3;
                 txtNutNom.setEditable(true);
                 txtNutMag.setEditable(true);
+                txtNutEstFis.setEditable(true);
                 txtNutOtros.setEditable(true);
                 txtNutEst.setEditable(false);
 
@@ -395,10 +409,12 @@ public class Nutriente1 extends javax.swing.JFrame {
             if(fila>=0){
                 txtNutNom.setText(tablaNutriente.getValueAt(fila,0).toString());
                 txtNutMag.setText(tablaNutriente.getValueAt(fila,1).toString());
-                txtNutEst.setText(tablaNutriente.getValueAt(fila,2).toString());
+                txtNutEstFis.setText(tablaNutriente.getValueAt(fila,2).toString());
+                txtNutEst.setText(tablaNutriente.getValueAt(fila,3).toString());
 
                 txtNutNom.setEditable(false);
                 txtNutMag.setEditable(false);
+                txtNutEstFis.setEditable(false);
                 txtNutOtros.setEditable(false);
                 txtNutEst.setEditable(false);
             }}
@@ -430,7 +446,7 @@ public class Nutriente1 extends javax.swing.JFrame {
                 txtNutNom.setText(tablaNutriente.getValueAt(fila,0).toString());
                 txtNutMag.setText(tablaNutriente.getValueAt(fila,1).toString());
                
-                txtNutOtros.setText(tablaNutriente.getValueAt(fila,2).toString());
+                txtNutEstFis.setText(tablaNutriente.getValueAt(fila,2).toString());
                 txtNutOtros.setText(tablaNutriente.getValueAt(fila,3).toString());
             }}
             opcion=4;
@@ -443,8 +459,8 @@ public class Nutriente1 extends javax.swing.JFrame {
             if(fila>=0){
                 txtNutNom.setText(tablaNutriente.getValueAt(fila,0).toString());
                 txtNutMag.setText(tablaNutriente.getValueAt(fila,1).toString());
-               
-                txtNutOtros.setText(tablaNutriente.getValueAt(fila,2).toString());
+                
+                txtNutEstFis.setText(tablaNutriente.getValueAt(fila,2).toString());
                 txtNutOtros.setText(tablaNutriente.getValueAt(fila,3).toString());
             }}
             opcion=5;
@@ -484,54 +500,47 @@ public class Nutriente1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-         vaciar();
+        vaciar();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
     
-    void agregar(){
-        
-        /*String animPes = txtAnimPeso.getText();
-        String animAnio = txtAnimAnio.getText();
-        String animUtil = txtAnimUtil.getText();
-        String animProd = txtAnimProd.getText();*/
-        
+    void agregar(){ 
         String nutNom = txtNutNom.getText();
         String nutMag = txtNutMag.getText();
-        String nutEst = txtNutEst.getText();
+        String nutEstFis = txtNutEstFis.getText();
+        String nutEst = txtNutEst.getText();        
         String nutOd = txtNutOtros.getText();
       
-        
         try{
-            if(nutNom.equals("")||nutMag.equals("")||nutEst.equals("")){
+            if(nutNom.equals("")||nutMag.equals("")||nutEst.equals("")||nutEstFis.equals("")){
                 JOptionPane.showMessageDialog(null, "Algunos campos estan vacios");
                 limpiarTabla(modelo);
             }else{
-                String sql = "INSERT INTO d1_nutriente (NutNom, NutMagNut, NutEst, NutOd) VALUES('" + nutNom + "','" + nutMag + "','" + nutEst + "','" + nutOd + "')";
+    String sql = "INSERT INTO d1_nutriente (NutNom, NutMagNut, NutEstFis, NutOd,NutEstado) VALUES('" + nutNom + "','" + nutMag + "','" + nutEstFis + "','" + nutOd +"','"+nutEst+ "')";
                     
                     con = cn.getConnection();
                      
                     st = con.createStatement();
-                     
+                   
                     st.executeUpdate(sql);
                     
                     JOptionPane.showMessageDialog(null, "Nutriente Registrado con Exito");
                     limpiarTabla(modelo);
-                }
+            }
         }catch(Exception e){
                 
-            }
         }
+    }
     
     void actualizar() {
-      
-    
+
         String nutNom = txtNutNom.getText();
         String nutMag = txtNutMag.getText();
+        String nutEstFis = txtNutEstFis.getText();
         String nutEst = txtNutEst.getText();
-        String nutOd = txtNutOtros.getText();
+        String nutOd = txtNutOtros.getText();     
         
-        
-        String sql = "UPDATE d1_nutriente SET NutNom='"+ nutNom + "', NutMagNut ='"+ nutMag + "', NutEst='"+ nutEst + "', NutOd='"+ nutOd +"' WHERE NutNom='" + nutNom+"'";
+        String sql = "UPDATE d1_nutriente SET NutNom='"+ nutNom + "', NutMagNut ='"+ nutMag + "', NutEstFis='"+ nutEstFis +"', NutOd='"+ nutOd + "', NutEstado='"+ nutEst +"' WHERE NutNom='" + nutNom+"'";
         
         try{
          if(nutNom!=null||nutMag!=null||nutEst!=null||nutOd!=null ){
@@ -557,21 +566,17 @@ public class Nutriente1 extends javax.swing.JFrame {
     }
     
     void eliminar() {
-       
-            /*String animPes = txtAnimPeso.getText();
-            String animAnio = txtAnimAnio.getText();
-            String animUtil = txtAnimUtil.getText();
-            String animProd = txtAnimProd.getText();*/
+  
             String nutNom = txtNutNom.getText();
             String nutMag = txtNutMag.getText();
             String nutEst = txtNutEst.getText();
             String NutOd = txtNutOtros.getText();
-                     
+            String nutEstFis = txtNutEstFis.getText();
             nutEst = "*";
         
-            String sql = "UPDATE d1_nutriente SET NutEst='"+ nutEst + "' WHERE NutNom='" + nutNom+"'";
+            String sql = "UPDATE d1_nutriente SET NutEstado='"+ nutEst + "' WHERE NutNom='" + nutNom+"'";
              try{
-            if(nutNom!=null||nutMag!=null||nutEst!=null||NutOd!=null){
+            if(nutNom!=null||nutMag!=null||nutEst!=null||NutOd!=null||nutEstFis!=null){
                 
                 con = cn.getConnection();                     
                 st = con.createStatement();
@@ -591,15 +596,16 @@ public class Nutriente1 extends javax.swing.JFrame {
         String nutNom = txtNutNom.getText();
         String nutMag = txtNutMag.getText();
         String nutEst = txtNutEst.getText();
+        String nutEstFis = txtNutEstFis.getText();
         String nutOd = txtNutOtros.getText();
 
 
 
         nutEst = "A";
 
-        String sql = "UPDATE d1_nutriente SET NutEst='"+ nutEst + "' WHERE NutNom='" + nutNom+"'";
+        String sql = "UPDATE d1_nutriente SET NutEstado='"+ nutEst + "' WHERE NutNom='" + nutNom+"'";
         try{
-            if(nutNom!=null||nutMag!=null||nutEst!=null||nutOd!=null){
+            if(nutNom!=null||nutMag!=null||nutEst!=null||nutOd!=null||nutEstFis!=null){
 
                 con = cn.getConnection();                     
                 st = con.createStatement();
@@ -618,15 +624,13 @@ public class Nutriente1 extends javax.swing.JFrame {
            String nutNom = txtNutNom.getText();
             String nutMag = txtNutMag.getText();
             String nutEst = txtNutEst.getText();
+            String nutEstFis = txtNutEstFis.getText();
             String nutOd = txtNutOtros.getText();
-           
-            
-            
             nutEst = "I";
         
-            String sql = "UPDATE d1_nutriente SET NutEst='"+ nutEst + "'WHERE NutNom='" + nutNom+"'";
+            String sql = "UPDATE d1_nutriente SET NutEstado='"+ nutEst + "'WHERE NutNom='" + nutNom+"'";
              try{
-            if(nutNom!=null||nutMag!=null||nutEst!=null||nutOd!=null){
+            if(nutNom!=null||nutMag!=null||nutEst!=null||nutOd!=null||nutEstFis!=null){
                 
                 con = cn.getConnection();                     
                 st = con.createStatement();
@@ -640,7 +644,6 @@ public class Nutriente1 extends javax.swing.JFrame {
         }catch(Exception e){
                 
             }   
-
     }
 
 void limpiarTabla(DefaultTableModel modelo) {
@@ -653,6 +656,7 @@ void limpiarTabla(DefaultTableModel modelo) {
 void vaciar() {
         txtNutNom.setText("");
         txtNutMag.setText("");
+        txtNutEstFis.setText("");
         /*txtAnimPeso.setText("");
         txtAnimAnio.setText("");
         txtAnimUtil.setText("");
@@ -707,14 +711,15 @@ void vaciar() {
             st = con.createStatement();
             rs = st.executeQuery(sql);
             
-            Object[]nutriente= new Object[4];
+            Object[]nutriente= new Object[5];
             modelo = (DefaultTableModel)tablaNutriente.getModel();
-            while(rs.next()){
+            
+            while(rs.next()){             
                 nutriente[0]= rs.getString("NutNom");
                 nutriente[1]= rs.getString("NutMagNut");
-                nutriente[2]= rs.getString("NutEst");
+                nutriente[2]= rs.getString("NutEstFis");
                 nutriente[3]= rs.getString("NutOd");
-           
+                nutriente[4]= rs.getString("NutEstado");
                 modelo.addRow(nutriente);
             }
            
@@ -735,6 +740,7 @@ void vaciar() {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
@@ -745,6 +751,7 @@ void vaciar() {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaNutriente;
     private javax.swing.JTextField txtNutEst;
+    private javax.swing.JTextField txtNutEstFis;
     private javax.swing.JTextField txtNutMag;
     private javax.swing.JTextField txtNutNom;
     private javax.swing.JTextArea txtNutOtros;

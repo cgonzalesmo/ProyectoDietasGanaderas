@@ -619,11 +619,9 @@ public class Animal1 extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Error"); 
          }             
                
-                
         }catch(Exception e){
                 
             }
-
     }
     
     void eliminar() {
@@ -656,40 +654,36 @@ public class Animal1 extends javax.swing.JFrame {
         }catch(Exception e){
                 
             }
-           
-       
-         
-
     }
-        void reactivar() {
-            String animCod = txtAnimCod.getText();
-            String animTipo = txtAnimTipo.getText();
-            String animPes = txtAnimPeso.getText();
-            String animAnio = txtAnimAnio.getText();
-            String animUtil = txtAnimUtil.getText();
-            String animProd = txtAnimProd.getText();
-            String animOd = txtAnimOtros.getText();
-            String animEstado = txtAnimEstado.getText();
-            
-            
-            animEstado = "A";
-        
-            String sql = "UPDATE d1_animal SET AnimEstado='"+ animEstado + "' WHERE AnimCod=" + animCod;
-             try{
+    void reactivar() {
+        String animCod = txtAnimCod.getText();
+        String animTipo = txtAnimTipo.getText();
+        String animPes = txtAnimPeso.getText();
+        String animAnio = txtAnimAnio.getText();
+        String animUtil = txtAnimUtil.getText();
+        String animProd = txtAnimProd.getText();
+        String animOd = txtAnimOtros.getText();
+        String animEstado = txtAnimEstado.getText();
+
+
+        animEstado = "A";
+
+        String sql = "UPDATE d1_animal SET AnimEstado='"+ animEstado + "' WHERE AnimCod=" + animCod;
+         try{
             if(animTipo!=null||animPes!=null||animAnio!=null||animUtil!=null||animProd!=null||animEstado!=null){
-                
+
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);
-                
+
                 JOptionPane.showMessageDialog(null, "Se reactivo el registro "+animCod+" de la tabla animal");
                 limpiarTabla(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
                 }
         }catch(Exception e){
-                
-            }
+
+        }
     }
     void inactivar() {
             String animCod = txtAnimCod.getText();

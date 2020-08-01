@@ -489,12 +489,9 @@ public class dieta1 extends javax.swing.JFrame {
     
     void agregar(){
         String dietFin = txtDietFin.getText();
-      
         String dietOd = txtDietOtros.getText();
         String dietEst = txtDietEstado.getText();
-        
-      
-        
+
         try{
             if(dietFin.equals("")||dietEst.equals("")){
                 JOptionPane.showMessageDialog(null, "Algunos campos estan vacios");
@@ -513,8 +510,8 @@ public class dieta1 extends javax.swing.JFrame {
                 }
         }catch(Exception e){
                 
-            }
         }
+    }
     
     void actualizar() {
         String dietCod = txtDietCod.getText();
@@ -522,35 +519,29 @@ public class dieta1 extends javax.swing.JFrame {
         String dietOd = txtDietOtros.getText();
         
         String sql = "UPDATE d1_dieta SET DietFin='"+ dietFin + "', DietOd='"+ dietOd + "' WHERE DietCod=" + dietCod;
-        
         try{
-         if(dietFin!=null){
-                           
-                con = cn.getConnection();                     
-                st = con.createStatement();
-                st.executeUpdate(sql);  
-                
-                JOptionPane.showMessageDialog(null, "Se modificó el registro "+dietCod+" de la tabla DIETA ");
-                limpiarTabla(modelo);
-         }else{
+            if(dietFin!=null){
+
+                   con = cn.getConnection();                     
+                   st = con.createStatement();
+                   st.executeUpdate(sql);  
+
+                   JOptionPane.showMessageDialog(null, "Se modificó el registro "+dietCod+" de la tabla DIETA ");
+                   limpiarTabla(modelo);
+            }else{
              JOptionPane.showMessageDialog(null, "Error"); 
-         }             
-               
-                
+            }                     
         }catch(Exception e){
                 
             }
-
     }
     
     void eliminar() {
         
             String dietCod = txtDietCod.getText();
             String dietFin = txtDietFin.getText();
-            
             String dietOd = txtDietOtros.getText();
             String dietEstado = txtDietEstado.getText();
-            
             
             dietEstado = "*";
         
@@ -569,47 +560,42 @@ public class dieta1 extends javax.swing.JFrame {
                 }
         }catch(Exception e){
                 
-            }
-           
-       
-         
+            }  
 
     }
-        void reactivar() {
-            String dietCod = txtDietCod.getText();
-            String dietFin = txtDietFin.getText();
-            
-            String dietOd = txtDietOtros.getText();
-            String dietEst = txtDietEstado.getText();
-            
-            
-            dietEst = "A";
-            String sql = "UPDATE d1_dieta SET DietEst='"+ dietEst + "' WHERE DietCod=" + dietCod;
-            
-             try{
+    void reactivar() {
+        String dietCod = txtDietCod.getText();
+        String dietFin = txtDietFin.getText();
+
+        String dietOd = txtDietOtros.getText();
+        String dietEst = txtDietEstado.getText();
+
+
+        dietEst = "A";
+        String sql = "UPDATE d1_dieta SET DietEst='"+ dietEst + "' WHERE DietCod=" + dietCod;
+
+         try{
             if(dietFin!=null||dietEst!=null){
-                
+
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);
-                
+
                 JOptionPane.showMessageDialog(null, "Se reactivo el registro "+dietCod+" de la tabla Dietas");
                 limpiarTabla(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
                 }
         }catch(Exception e){
-                
-            }
+
+        }
     }
     void inactivar() {
             String dietCod = txtDietCod.getText();
             String dietFin = txtDietFin.getText();
-            
             String dietOd = txtDietOtros.getText();
             String dietEst = txtDietEstado.getText();
-            
-            
+
             dietEst = "I";
         
             String sql = "UPDATE d1_dieta SET DietEst='"+ dietEst + "' WHERE DietCod=" + dietCod;
@@ -628,10 +614,7 @@ public class dieta1 extends javax.swing.JFrame {
         }catch(Exception e){
                 
             }
-           
-       
-         
-
+ 
     }
 
 void limpiarTabla(DefaultTableModel modelo) {
