@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Animal_Nutriente extends javax.swing.JFrame {
+public class Nutriente_Alimento extends javax.swing.JFrame {
     int opcion=0;
     int cont =0;
     Conexion cn = new Conexion();
@@ -18,33 +18,31 @@ public class Animal_Nutriente extends javax.swing.JFrame {
     DefaultTableModel modelo;
     int id =0;
     
-    String AnimCodigo= "";
-    String NutNombre ="";
-    String mostrarAnimal ="";
+    String NutNombre="";
+    String AlimNom ="";
     String mostrarMagnitud="";
     
-    public Animal_Nutriente() {
+    public Nutriente_Alimento() {
         initComponents();
         setLocationRelativeTo(null);
         
-        setTitle("DIETAS GANADERAS - Animal_Nutriente");      
+        setTitle("DIETAS GANADERAS - Alimentos");
+        
        
         listar();
         
-        txtANAnimCod.setEditable(false); 
-        txtANNutNom.setEditable(false);        
-        txtANCantNec.setEditable(false);        
-        txtANEstado.setEditable(false);
-        verAnimal.setEditable(false);
+        txtNANutNom.setEditable(false); 
+        txtNAAlimNom.setEditable(false);        
+        txtNACantCon.setEditable(false);
+        txtNAEstado.setEditable(false);
         verMagnitud.setEditable(false);
-        
-        this.iniciarCBCodAnim();
         this.iniciarCBNutNom();
+        this.iniciarCBAlimNom();
         
-        CBAnimCod.setVisible(false);
-        CBNutNom.setVisible(false);
-        
+        CBNANutNom.setVisible(false);
+        CBNAAlimNom.setVisible(false);
         cont++;
+        
     }
 
    
@@ -58,19 +56,17 @@ public class Animal_Nutriente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtANCantNec = new javax.swing.JTextField();
-        txtANNutNom = new javax.swing.JTextField();
+        txtNACantCon = new javax.swing.JTextField();
+        txtNAAlimNom = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtANEstado = new javax.swing.JTextField();
-        txtANAnimCod = new javax.swing.JTextField();
-        CBAnimCod = new javax.swing.JComboBox<>();
-        CBNutNom = new javax.swing.JComboBox<>();
-        verAnimal = new javax.swing.JTextField();
+        txtNAEstado = new javax.swing.JTextField();
+        txtNANutNom = new javax.swing.JTextField();
+        CBNANutNom = new javax.swing.JComboBox<>();
+        CBNAAlimNom = new javax.swing.JComboBox<>();
         verMagnitud = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaAN = new javax.swing.JTable();
+        tablaNA = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnAdicionar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -92,48 +88,46 @@ public class Animal_Nutriente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
 
-        jLabel2.setText("Codigo del animal:");
+        jLabel2.setText("Nombre del nutriente  :");
 
-        jLabel6.setText("Cantidad necesaria:");
+        jLabel6.setText("Cantidad contenida :");
 
-        jLabel8.setText("Nombre del nutriente:");
+        jLabel8.setText("Nombre del alimento:");
 
-        jLabel12.setText("                       Estado:");
-
-        txtANEstado.setText("A");
-        txtANEstado.addActionListener(new java.awt.event.ActionListener() {
+        txtNAAlimNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtANEstadoActionPerformed(evt);
+                txtNAAlimNomActionPerformed(evt);
             }
         });
 
-        txtANAnimCod.addActionListener(new java.awt.event.ActionListener() {
+        jLabel12.setText("Estado:");
+
+        txtNAEstado.setText("A");
+        txtNAEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtANAnimCodActionPerformed(evt);
+                txtNAEstadoActionPerformed(evt);
             }
         });
 
-        CBAnimCod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NINGUNO" }));
-        CBAnimCod.addActionListener(new java.awt.event.ActionListener() {
+        txtNANutNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBAnimCodActionPerformed(evt);
+                txtNANutNomActionPerformed(evt);
             }
         });
 
-        CBNutNom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NINGUNO" }));
-        CBNutNom.addActionListener(new java.awt.event.ActionListener() {
+        CBNANutNom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno" }));
+        CBNANutNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBNutNomActionPerformed(evt);
+                CBNANutNomActionPerformed(evt);
             }
         });
 
-        verAnimal.addActionListener(new java.awt.event.ActionListener() {
+        CBNAAlimNom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno" }));
+        CBNAAlimNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verAnimalActionPerformed(evt);
+                CBNAAlimNomActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Ref. tipo de animal:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,72 +135,64 @@ public class Animal_Nutriente extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNANutNom, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(txtNACantCon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CBNANutNom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtANCantNec, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(txtANAnimCod))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(verMagnitud, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CBAnimCod, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(verMagnitud, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtNAAlimNom, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CBNAAlimNom, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtANNutNom, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CBNutNom, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtANEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(verAnimal))
-                .addContainerGap())
+                        .addComponent(txtNAEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtANAnimCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(txtANNutNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CBAnimCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CBNutNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtANCantNec)
-                    .addComponent(verMagnitud)
-                    .addComponent(jLabel12)
-                    .addComponent(txtANEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNAAlimNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNANutNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CBNAAlimNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CBNANutNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNAEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNACantCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verMagnitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla"));
 
-        tablaAN.setModel(new javax.swing.table.DefaultTableModel(
+        tablaNA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ANAnimCod", "ANNutNom", "ANCantNec", "ANEstado"
+                "NANutNom", "NAAlimNom", "NACantCon", "NAEstado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -217,24 +203,21 @@ public class Animal_Nutriente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaAN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(tablaAN);
+        tablaNA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(tablaNA);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -363,7 +346,7 @@ public class Animal_Nutriente extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 87, 66));
-        jLabel1.setText("Animal - Nutriente");
+        jLabel1.setText("Nutriente - Alimento");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -371,7 +354,7 @@ public class Animal_Nutriente extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -391,12 +374,12 @@ public class Animal_Nutriente extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 39, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -415,19 +398,144 @@ public class Animal_Nutriente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        vaciar();
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void txtNAEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNAEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNAEstadoActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+         if(opcion==0){
+            txtNANutNom.setEditable(false);
+            txtNAAlimNom.setEditable(false);
+            txtNACantCon.setEditable(true);            
+            txtNAEstado.setEditable(false);
+            CBNANutNom.setVisible(true);
+            CBNAAlimNom.setVisible(true);            
+            verMagnitud.setEditable(false);
+            txtNAEstado.setText("A");
+            opcion=1;
+        }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+         if(opcion==0){
+            int fila=tablaNA.getSelectedRow();
+            if(fila>=0){
+                CBNANutNom.setVisible(true);
+                CBNAAlimNom.setVisible(true);
+                
+                txtNANutNom.setText(tablaNA.getValueAt(fila,0).toString());
+                txtNAAlimNom.setText(tablaNA.getValueAt(fila,1).toString());
+                txtNACantCon.setText(tablaNA.getValueAt(fila,2).toString());
+                txtNAEstado.setText(tablaNA.getValueAt(fila,3).toString());
+                
+                txtNANutNom.setEditable(false);
+                txtNAAlimNom.setEditable(false);
+                txtNACantCon.setEditable(true);                
+                txtNAEstado.setEditable(false);
+                verMagnitud.setEditable(false);
+                opcion=3;
+            }else{
+                JOptionPane.showMessageDialog(null,"fila no seleccionada");
+            }
+
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+         if(opcion==0){
+            int fila=tablaNA.getSelectedRow();
+            if(fila>=0){
+                CBNANutNom.setVisible(false);
+                CBNAAlimNom.setVisible(false);
+                
+                txtNANutNom.setText(tablaNA.getValueAt(fila,0).toString());
+                txtNAAlimNom.setText(tablaNA.getValueAt(fila,1).toString());
+                txtNACantCon.setText(tablaNA.getValueAt(fila,2).toString());                
+                txtNAEstado.setText(tablaNA.getValueAt(fila,3).toString());
+
+                txtNANutNom.setEditable(false);
+                txtNAAlimNom.setEditable(false);
+                txtNACantCon.setEditable(false);                
+                txtNAEstado.setEditable(false);
+                verMagnitud.setEditable(false);
+                
+            }}
+            opcion=6;
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        
+        if(opcion==1){
+            vaciar();
+            btnAdicionar.setEnabled(false);//por ver
+        }
+        if(opcion==3)
+        btnModificar.setEnabled(false);
+        if(opcion==6)
+        btnEliminar.setEnabled(false);
+        if(opcion==5)
+        btnReactivar.setEnabled(false);
+        if(opcion==4)
+        btnInactivar.setEnabled(false);
+        opcion=0;
+        
+        
+        CBNANutNom.setVisible(false);
+        CBNAAlimNom.setVisible(false);
+        verMagnitud.setEditable(false);
+                        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnInactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInactivarActionPerformed
+         if(opcion==0){
+            int fila=tablaNA.getSelectedRow();
+            if(fila>=0){
+                CBNANutNom.setVisible(false);
+                CBNAAlimNom.setVisible(false);
+                txtNANutNom.setText(tablaNA.getValueAt(fila,0).toString());
+                txtNAAlimNom.setText(tablaNA.getValueAt(fila,1).toString());
+                txtNACantCon.setText(tablaNA.getValueAt(fila,2).toString());
+                txtNAEstado.setText(tablaNA.getValueAt(fila,3).toString());
+                
+                txtNANutNom.setEditable(false);
+                txtNAAlimNom.setEditable(false);
+                txtNACantCon.setEditable(false);                
+                txtNAEstado.setEditable(false);
+                verMagnitud.setEditable(false);
+                
+                
+            }}
+            opcion=4;
+
+    }//GEN-LAST:event_btnInactivarActionPerformed
+
+    private void btnReactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReactivarActionPerformed
+       if(opcion==0){
+            int fila=tablaNA.getSelectedRow();
+            if(fila>=0){
+                CBNANutNom.setVisible(false);
+                CBNAAlimNom.setVisible(false);
+                txtNANutNom.setText(tablaNA.getValueAt(fila,0).toString());
+                txtNAAlimNom.setText(tablaNA.getValueAt(fila,1).toString());
+                txtNACantCon.setText(tablaNA.getValueAt(fila,2).toString());
+                txtNAEstado.setText(tablaNA.getValueAt(fila,3).toString());
+                
+                txtNANutNom.setEditable(false);
+                txtNAAlimNom.setEditable(false);
+                txtNACantCon.setEditable(false);                
+                txtNAEstado.setEditable(false);
+                verMagnitud.setEditable(false);
+            }}
+            opcion=5;
+    }//GEN-LAST:event_btnReactivarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        
+        System.out.println(opcion);
         if(opcion==1){ //si presiono  ADICIONAR
 
             agregar();
             listar();
             vaciar();
-            
 
         }else if(opcion==3){
 
@@ -447,15 +555,13 @@ public class Animal_Nutriente extends javax.swing.JFrame {
             listar();
         }
         vaciar();
-        
         opcion=0;
-        CBAnimCod.setVisible(false);
-        CBNutNom.setVisible(false);
-        txtANAnimCod.setEditable(false);
-        txtANNutNom.setEditable(false);
-        txtANCantNec.setEditable(false);
-        txtANEstado.setEditable(false);
-        verAnimal.setEditable(false);
+        CBNANutNom.setVisible(false);
+        CBNAAlimNom.setVisible(false);
+        txtNANutNom.setEditable(false);
+        txtNAAlimNom.setEditable(false);
+        txtNACantCon.setEditable(false);                
+        txtNAEstado.setEditable(false);
         verMagnitud.setEditable(false);
         btnAdicionar.setEnabled(true);
         btnModificar.setEnabled(true);
@@ -464,266 +570,127 @@ public class Animal_Nutriente extends javax.swing.JFrame {
         btnInactivar.setEnabled(true);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnReactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReactivarActionPerformed
-        if(opcion==0){
-            int fila=tablaAN.getSelectedRow();
-            if(fila>=0){
-                CBAnimCod.setVisible(false);
-                CBNutNom.setVisible(false);
-                txtANAnimCod.setText(tablaAN.getValueAt(fila,0).toString());
-                txtANNutNom.setText(tablaAN.getValueAt(fila,1).toString());
-                txtANCantNec.setText(tablaAN.getValueAt(fila,2).toString());
-                txtANEstado.setText(tablaAN.getValueAt(fila,3).toString());
-                txtANAnimCod.setEditable(false);
-                txtANNutNom.setEditable(false);
-                txtANCantNec.setEditable(false);
-                txtANEstado.setEditable(false);
-                verAnimal.setEditable(false);
-                verMagnitud.setEditable(false);
-            }}
-            opcion=5;
-    }//GEN-LAST:event_btnReactivarActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+         vaciar();
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnInactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInactivarActionPerformed
-        if(opcion==0){
-            int fila=tablaAN.getSelectedRow();
-            if(fila>=0){
-                CBAnimCod.setVisible(false);
-                CBNutNom.setVisible(false);
-
-                txtANAnimCod.setText(tablaAN.getValueAt(fila,0).toString());
-                txtANNutNom.setText(tablaAN.getValueAt(fila,1).toString());
-                txtANCantNec.setText(tablaAN.getValueAt(fila,2).toString());
-                txtANEstado.setText(tablaAN.getValueAt(fila,3).toString());
-                txtANAnimCod.setEditable(false);
-                txtANNutNom.setEditable(false);
-                txtANCantNec.setEditable(false);
-                txtANEstado.setEditable(false);
-                verAnimal.setEditable(false);
-                verMagnitud.setEditable(false);
-            }}
-            opcion=4;
-    }//GEN-LAST:event_btnInactivarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-        if(opcion==1){
-            vaciar();
-            btnAdicionar.setEnabled(false);//por ver
-        }
-        if(opcion==3)
-        btnModificar.setEnabled(false);
-        if(opcion==6)
-        btnEliminar.setEnabled(false);
-        if(opcion==5)
-        btnReactivar.setEnabled(false);
-        if(opcion==4)
-        btnInactivar.setEnabled(false);
-        opcion=0;
-
-        CBAnimCod.setVisible(false);
-        CBNutNom.setVisible(false);
-        verAnimal.setEditable(false);
-        verMagnitud.setEditable(false);
-
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(opcion==0){
-            int fila=tablaAN.getSelectedRow();
-            if(fila>=0){
-                CBAnimCod.setVisible(false);
-                CBNutNom.setVisible(false);
-                txtANAnimCod.setText(tablaAN.getValueAt(fila,0).toString());
-                txtANNutNom.setText(tablaAN.getValueAt(fila,1).toString());
-                txtANCantNec.setText(tablaAN.getValueAt(fila,2).toString());
-                txtANEstado.setText(tablaAN.getValueAt(fila,3).toString());
-
-                txtANAnimCod.setEditable(false);
-                txtANNutNom.setEditable(false);
-                txtANCantNec.setEditable(false);
-                txtANEstado.setEditable(false);
-                verAnimal.setEditable(false);
-                verMagnitud.setEditable(false);
-            }}
-            opcion=6;
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        if(opcion==0){
-            int fila=tablaAN.getSelectedRow();
-            if(fila>=0){
-                CBAnimCod.setVisible(true);
-                CBNutNom.setVisible(true);
-
-                txtANAnimCod.setText(tablaAN.getValueAt(fila,0).toString());
-                txtANNutNom.setText(tablaAN.getValueAt(fila,1).toString());
-                txtANCantNec.setText(tablaAN.getValueAt(fila,2).toString());
-                txtANEstado.setText(tablaAN.getValueAt(fila,3).toString());
-
-                txtANAnimCod.setEditable(false);
-                txtANNutNom.setEditable(false);
-                txtANCantNec.setEditable(true);
-                txtANEstado.setEditable(false);
-                verAnimal.setEditable(false);
-                verMagnitud.setEditable(false);
-
-                opcion=3;
-            }else{
-                JOptionPane.showMessageDialog(null,"fila no seleccionada");
-            }
-
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        if(opcion==0){
-            txtANAnimCod.setEditable(false);
-            txtANNutNom.setEditable(false);
-            txtANCantNec.setEditable(true);
-            txtANEstado.setEditable(false);
-            CBAnimCod.setVisible(true);
-            CBNutNom.setVisible(true);
-            verAnimal.setEditable(false);
-            verMagnitud.setEditable(false);
-            txtANEstado.setText("A");
-            opcion=1;
-        }
-    }//GEN-LAST:event_btnAdicionarActionPerformed
-
-    private void verAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verAnimalActionPerformed
+    private void txtNANutNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNANutNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verAnimalActionPerformed
+    }//GEN-LAST:event_txtNANutNomActionPerformed
 
-    private void CBNutNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBNutNomActionPerformed
+    private void CBNANutNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBNANutNomActionPerformed
         // TODO add your handling code here:
         if(this.cont>0){
             try {
                 Statement st=con.createStatement();
-                ResultSet result=st.executeQuery("SELECT *FROM d1_Nutriente WHERE NutNom='"+CBNutNom.getSelectedItem()+"'");
+                ResultSet result=st.executeQuery("SELECT *FROM d1_nutriente WHERE NutNom='"+CBNANutNom.getSelectedItem()+"'");
                 result.next();
                 NutNombre=result.getString("NutNom");
                 mostrarMagnitud = result.getString("NutMagNut");
-                txtANNutNom.setText(NutNombre);
+                txtNANutNom.setText(NutNombre);
                 verMagnitud.setText(mostrarMagnitud);
             } catch (SQLException ex) {
-                Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Nutriente_Alimento.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }//GEN-LAST:event_CBNANutNomActionPerformed
 
-    }//GEN-LAST:event_CBNutNomActionPerformed
-
-    private void CBAnimCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBAnimCodActionPerformed
+    private void CBNAAlimNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBNAAlimNomActionPerformed
         // TODO add your handling code here:
         if(this.cont>0){
             try {
                 Statement st=con.createStatement();
-                ResultSet result=st.executeQuery("SELECT *FROM d1_Animal WHERE AnimCod='"+CBAnimCod.getSelectedItem()+"'");
+                ResultSet result=st.executeQuery("SELECT *FROM d1_alimento WHERE AlimNom='"+CBNAAlimNom.getSelectedItem()+"'");
                 result.next();
-                AnimCodigo=result.getString("AnimCod");
-                mostrarAnimal = result.getString("AnimTip");
-                txtANAnimCod.setText(AnimCodigo);
-                verAnimal.setText(mostrarAnimal);
+                AlimNom=result.getString("AlimNom");
+                
+                txtNAAlimNom.setText(AlimNom);
+                
             } catch (SQLException ex) {
-                Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Nutriente_Alimento.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_CBAnimCodActionPerformed
+    }//GEN-LAST:event_CBNAAlimNomActionPerformed
 
-    private void txtANAnimCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtANAnimCodActionPerformed
+    private void txtNAAlimNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNAAlimNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtANAnimCodActionPerformed
-
-    private void txtANEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtANEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtANEstadoActionPerformed
-    boolean buscar(String aCod, String nNom){
+    }//GEN-LAST:event_txtNAAlimNomActionPerformed
+     boolean buscar(String aNom, String nNom){
         boolean existeNutriente=false;
         String nutnom;
-        String animcod;
+        String alimnom;
         try{
                 Statement st=con.createStatement();
-                ResultSet result=st.executeQuery("SELECT *FROM gz2_animal_nutriente");
+                ResultSet result=st.executeQuery("SELECT *FROM gz2_nutriente_alimento");
                 while (result.next())
                 {
-                nutnom=result.getString("ANNutNom");
-                animcod = result.getString("ANAnimCod");
-                    if(aCod.equals(animcod)&&nNom.equals(nutnom)){
+                nutnom=result.getString("NANutNom");
+                alimnom = result.getString("NAAlimNom");
+                    if(aNom.equals(alimnom)&&nNom.equals(nutnom)){
                        existeNutriente =true;
                        
                     }               
                 }            
         } catch (SQLException ex) {
-                Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Nutriente_Alimento.class.getName()).log(Level.SEVERE, null, ex);
             }         
         
         
         return existeNutriente;
     }
-    
     void agregar(){
-        String ANAnimCod = txtANAnimCod.getText();
-        String ANNutNom = txtANNutNom.getText();
-        String ANCantNec = txtANCantNec.getText();   
-        String ANEstado = txtANEstado.getText(); 
-        
-       // if(buscar(ANAnimCod, ANNutNom)==false){
+        String NANutNom = txtNANutNom.getText();
+        String NAAlimNom = txtNAAlimNom.getText();
+        String NACantCon = txtNACantCon.getText();
+        String NAEstado = txtNAEstado.getText(); 
+        NAEstado = "A";
+        if(buscar(NAAlimNom, NANutNom)==false){
         try{
-            if(ANAnimCod.equals("")||ANNutNom.equals("")||ANCantNec.equals("")||ANEstado.equals("")){
+            
+            if(NANutNom.equals("")||NAAlimNom.equals("")||NACantCon.equals("")||NAEstado.equals("")){
                 JOptionPane.showMessageDialog(null, "Algunos campos estan vacios");
-                
                 limpiarTabla(modelo);
+               
             }else{
-                String sql = "INSERT INTO gz2_animal_nutriente (ANAnimCod, ANNutNom, ANCantNec, ANEstado) VALUES('" + ANAnimCod + "','" + ANNutNom + "','" + ANCantNec + "','"+ ANEstado + "')";
+                String sql = "INSERT INTO gz2_nutriente_alimento (NANutNom, NAAlimNom, NACantCon, NAEstado) VALUES('" + NANutNom + "','" + NAAlimNom + "','" + NACantCon + "','"+ NAEstado + "')";
                     
-                    con = cn.getConnection();                     
-                    st = con.createStatement();                     
-                    st.executeUpdate(sql);                 
+                    con = cn.getConnection();
+                     
+                    st = con.createStatement();
+                     
+                    st.executeUpdate(sql);
+                   
                     
-                    JOptionPane.showMessageDialog(null, "Se ha registrado "+ANAnimCod+" con éxito a la tabla ANIMAL_NUTRIENTE" );
+                    JOptionPane.showMessageDialog(null, "El registro " +NANutNom+" fue agregado con éxito a l tabla N-A");
                     limpiarTabla(modelo);
                 }
         }catch(Exception e){
-                /*if(buscar(ANAnimCod, ANNutNom)==true){
-                            throw  new Error ("error1");
-                        }*/                     
-                    System.out.println("error");
-        }        
-        /*
+                System.out.println("error");
+            }
         }else{
         System.out.println("agregar"+opcion);  
-        JOptionPane.showMessageDialog(null, "Ya existe un animal "+ANAnimCod+" que consume el nutriente "+ ANNutNom );
-        vaciar();
-        ANEstado = "A";
-        
-        txtANAnimCod.setEditable(false);
-                txtANNutNom.setEditable(false);
-                txtANCantNec.setEditable(false);
-                txtANEstado.setEditable(false);
-                verAnimal.setEditable(false);
-                verMagnitud.setEditable(false);
-                CBAnimCod.setVisible(false);
-                CBNutNom.setVisible(false);
-        
-        
-        }      */
-}    
+        JOptionPane.showMessageDialog(null, "Ya existe un animal "+NANutNom+" que consume el nutriente "+ NAAlimNom );
+        limpiarTabla(modelo);
+        vaciar();}
+        }
+    
     void actualizar() {
-        String ANAnimCod = txtANAnimCod.getText();
-        String ANNutNom = txtANNutNom.getText();
-        String ANCantNec = txtANCantNec.getText();   
-        String ANEstado = txtANEstado.getText(); 
+        String NANutNom = txtNANutNom.getText();
+        String NAAlimNom = txtNAAlimNom.getText();
+        String NACantCon = txtNACantCon.getText();
+        String NAEstado = txtNAEstado.getText(); 
         
-        String sql = "UPDATE gz2_animal_nutriente SET ANAnimCod= '"+ANAnimCod+ "', ANNutNom='"+ ANNutNom + "', ANCantNec ='"+ ANCantNec + "', ANEstado='"+ ANEstado +  "' WHERE ANAnimCod='" + ANAnimCod+"' AND ANNutNom='"+ ANNutNom+"'" ; 
+        String sql = "UPDATE gz2_nutriente_alimento SET NANutNom= '"+NANutNom+ "', NAAlimNom='"+ NAAlimNom + "', NACantCon ='"+ NACantCon + "', NAEstado='"+ NAEstado + "' WHERE NANutNom='" + NANutNom+"' AND NAAlimNom='"+ NAAlimNom+"'" ;
         System.out.println("hols");
         try{
-         if(ANAnimCod!=null||ANNutNom!=null||ANCantNec!=null||ANEstado!=null){
+         if(NANutNom!=null||NAAlimNom!=null||NACantCon!=null||NAEstado!=null){
                            
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);  
                 
-                JOptionPane.showMessageDialog(null, "Se modificó el registro "+ANAnimCod+" de la tabla ANIMAL_NUTRIENTE ");
+                JOptionPane.showMessageDialog(null, "Se modificó el registro "+NANutNom+" de la tabla N - A ");
                 limpiarTabla(modelo);
          }else{
              JOptionPane.showMessageDialog(null, "Error"); 
@@ -738,22 +705,22 @@ public class Animal_Nutriente extends javax.swing.JFrame {
     
     void eliminar() {
         
-        String ANAnimCod = txtANAnimCod.getText();
-        String ANNutNom = txtANNutNom.getText();
-        String ANCantNec = txtANCantNec.getText();   
-        String ANEstado = txtANEstado.getText();           
+        String NANutNom = txtNANutNom.getText();
+        String NAAlimNom = txtNAAlimNom.getText();
+        String NACantCon = txtNACantCon.getText();
+        String NAEstado = txtNAEstado.getText();          
             
-            ANEstado = "*";
-        
-            String sql = "UPDATE gz2_animal_nutriente SET ANEstado='"+ ANEstado + "' WHERE ANAnimCod='" + ANAnimCod+"' AND ANNutNom='"+ ANNutNom+"'" ; 
+            NAEstado = "*";
+                                                                                    //WHERE pais = 'México' AND edad > 30   
+            String sql = "UPDATE gz2_nutriente_alimento SET NAEstado='"+ NAEstado + "' WHERE NANutNom='" + NANutNom+"' AND NAAlimNom='"+ NAAlimNom+"'" ;
              try{
-            if(ANAnimCod!=null||ANNutNom!=null||ANCantNec!=null||ANEstado!=null){
+            if(NANutNom!=null||NAAlimNom!=null||NACantCon!=null||NAEstado!=null){
                 
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);
                 
-                JOptionPane.showMessageDialog(null, "Se elimino el registro "+ ANAnimCod+" de la tabla ANIMAL_NUTRIENTE");
+                JOptionPane.showMessageDialog(null, "Se elimino el registro "+ NANutNom+" de la tabla N - A");
                 limpiarTabla(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
@@ -767,23 +734,22 @@ public class Animal_Nutriente extends javax.swing.JFrame {
 
     }
         void reactivar() {
-        String ANAnimCod = txtANAnimCod.getText();
-        String ANNutNom = txtANNutNom.getText();
-        String ANCantNec = txtANCantNec.getText();   
-        String ANEstado = txtANEstado.getText();
+       String NANutNom = txtNANutNom.getText();
+        String NAAlimNom = txtNAAlimNom.getText();
+        String NACantCon = txtNACantCon.getText();
+        String NAEstado = txtNAEstado.getText();          
             
-            
-            ANEstado = "A";
+            NAEstado = "A";
         
-            String sql = "UPDATE gz2_animal_nutriente SET ANEstado='"+ ANEstado + "' WHERE ANAnimCod='" + ANAnimCod+"' AND ANNutNom='"+ ANNutNom+"'" ;  
+            String sql = "UPDATE gz2_nutriente_alimento SET NAEstado='"+ NAEstado + "' WHERE NANutNom='" + NANutNom+"' AND NAAlimNom='"+ NAAlimNom+"'" ;
              try{
-            if(ANAnimCod!=null||ANNutNom!=null||ANCantNec!=null||ANEstado!=null){
+            if(NANutNom!=null||NAAlimNom!=null||NACantCon!=null||NAEstado!=null){
                 
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);
                 
-                JOptionPane.showMessageDialog(null, "Se reactivo el registro "+ANAnimCod+" de la tabla ANIMAL_NUTRIENTE");
+                JOptionPane.showMessageDialog(null, "Se reactivo el registro "+NANutNom+" de la tabla N - A");
                 limpiarTabla(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
@@ -793,26 +759,21 @@ public class Animal_Nutriente extends javax.swing.JFrame {
             }
     }
     void inactivar() {
-        System.out.println("hi1");
-        String ANAnimCod = txtANAnimCod.getText();
-        String ANNutNom = txtANNutNom.getText();
-        String ANCantNec = txtANCantNec.getText();   
-        String ANEstado = txtANEstado.getText();
+        String NANutNom = txtNANutNom.getText();
+        String NAAlimNom = txtNAAlimNom.getText();
+        String NACantCon = txtNACantCon.getText();
+        String NAEstado = txtNAEstado.getText();          
             
-            
-            ANEstado = "I";
+            NAEstado = "I";
         
-        
-            String sql = "UPDATE gz2_animal_nutriente SET ANEstado='"+ ANEstado + "' WHERE ANAnimCod='" + ANAnimCod+"' AND ANNutNom='"+ ANNutNom+"'" ; 
-            System.out.println("hi2");
+            String sql = "UPDATE gz2_nutriente_alimento SET NAEstado='"+ NAEstado + "' WHERE NANutNom='" + NANutNom+"' AND NAAlimNom='"+ NAAlimNom+"'" ;
              try{
-            if(ANAnimCod!=null||ANNutNom!=null||ANCantNec!=null||ANEstado!=null){
-                System.out.println("hi3");
+            if(NANutNom!=null||NAAlimNom!=null||NACantCon!=null||NAEstado!=null){
                 con = cn.getConnection();                     
                 st = con.createStatement();
                 st.executeUpdate(sql);
-                System.out.println("hi4");
-                JOptionPane.showMessageDialog(null, "Se inactivo el registro "+ANAnimCod+" de la tabla ANIMAL_NUTRIENTE");
+                
+                JOptionPane.showMessageDialog(null, "Se inactivo el registro "+NANutNom+" de la tabla N - A");
                 limpiarTabla(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
@@ -823,28 +784,25 @@ public class Animal_Nutriente extends javax.swing.JFrame {
 
     }
 
-
 void limpiarTabla(DefaultTableModel modelo) {
-        for (int i = 0; i <= tablaAN.getRowCount(); i++) {
+        for (int i = 0; i <= tablaNA.getRowCount(); i++) {
             modelo.removeRow(i);
             i = i - 1;
         }
 
     }
 void vaciar() {
-        txtANAnimCod.setText("");
-        txtANNutNom.setText("");
-        txtANCantNec.setText("");
-        txtANEstado.setText("");
-        CBAnimCod.setSelectedIndex(0);
-        CBNutNom.setSelectedIndex(0);
-        verAnimal.setText("");
+        txtNANutNom.setText("");
+        txtNAAlimNom.setText("");
+        txtNACantCon.setText("");        
+        txtNAEstado.setText("");
+        CBNANutNom.setSelectedIndex(0);
+        CBNAAlimNom.setSelectedIndex(0);
         verMagnitud.setText("");
         
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -857,13 +815,13 @@ void vaciar() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Animal_Nutriente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nutriente_Alimento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Animal_Nutriente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nutriente_Alimento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Animal_Nutriente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nutriente_Alimento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Animal_Nutriente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nutriente_Alimento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -877,95 +835,65 @@ void vaciar() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Animal_Nutriente().setVisible(true);
+                new Nutriente_Alimento().setVisible(true);
             }
         });
     }
-    /*
-    public void mostrar(String valor){
-     DefaultTableModel modelo1=new DefaultTableModel();   
-     modelo1.addColumn("ANAnimCod");
-     modelo1.addColumn("ANNutNom");
-     modelo1.addColumn("ANCantNec");
-     modelo1.addColumn("ANEstado");
-     
-     tablaAN.setModel(modelo1);
-     String datos[]=new String[4]; 
-     String texto="SELECT * FROM gz2_animal_nutriente";
-        
-     try{
-         Statement st=con.createStatement();
-         ResultSet result=st.executeQuery(texto);
-         while(result.next()){
-            datos[0]=result.getString(1);
-            datos[1]=result.getString(2);
-            datos[2]=result.getString(3);
-            datos[3]=result.getString(4);
-         }
-         tablaAN.setModel(modelo1);
-     }catch(SQLException ex){
-         Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
-     }
-    }*/
+    
     void listar(){
-        String sql = "SELECT * FROM gz2_animal_nutriente";
+        String sql = "SELECT * FROM gz2_nutriente_alimento";
         try{
             con = cn.getConnection();
             st = con.createStatement();
             rs = st.executeQuery(sql);
-            Object[]alimento_nutriente= new Object[4];
-            
-            modelo = (DefaultTableModel)tablaAN.getModel();
-          
+            Object[]nutriente_alimento= new Object[4];
+            modelo = (DefaultTableModel)tablaNA.getModel();
             while(rs.next()){
-                
-                
-                alimento_nutriente[0]= rs.getInt("ANAnimCod");
-                alimento_nutriente[1]= rs.getString("ANNutNom");
-                alimento_nutriente[2]= rs.getInt("ANCantNec");
-                alimento_nutriente[3]= rs.getString("ANEstado");       
-          
-                modelo.addRow(alimento_nutriente);
+                nutriente_alimento[0]= rs.getString("NANutNom");
+                nutriente_alimento[1]= rs.getString("NAAlimNom");
+                nutriente_alimento[2]= rs.getInt("NACantCon");
+                nutriente_alimento[3]= rs.getString("NAEstado");                
                
+                modelo.addRow(nutriente_alimento);
             }
-            tablaAN.setModel(modelo);
+            tablaNA.setModel(modelo);
           }catch(Exception e){
               
           }
     }
-    
-    public void iniciarCBCodAnim(){
+   
+     public void iniciarCBAlimNom(){
          try {
             Statement st=con.createStatement();
-             ResultSet result=st.executeQuery("SELECT *FROM d1_Animal");
+             ResultSet result=st.executeQuery("SELECT *FROM d1_alimento");
              
              while(result.next()){
-                 CBAnimCod.addItem(result.getString("AnimCod"));
+                 CBNAAlimNom.addItem(result.getString("AlimNom"));
             }
              
         } catch (SQLException ex) {
             Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
         }
-           CBAnimCod.setVisible(false);
-    }
+           CBNAAlimNom.setVisible(false);
+     }
      public void iniciarCBNutNom(){
-            try {
+         try {
             Statement st=con.createStatement();
-             ResultSet result=st.executeQuery("SELECT *FROM d1_Nutriente");
+             ResultSet result=st.executeQuery("SELECT *FROM d1_nutriente");
              
              while(result.next()){
-                 CBNutNom.addItem(result.getString("NutNom"));
+                 CBNANutNom.addItem(result.getString("NutNom"));
             }
              
         } catch (SQLException ex) {
             Logger.getLogger(Animal_Nutriente.class.getName()).log(Level.SEVERE, null, ex);
         }
-           CBNutNom.setVisible(false);
-        }
+           CBNANutNom.setVisible(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBAnimCod;
-    private javax.swing.JComboBox<String> CBNutNom;
+    private javax.swing.JComboBox<String> CBNAAlimNom;
+    private javax.swing.JComboBox<String> CBNANutNom;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnCancelar;
@@ -978,7 +906,6 @@ void vaciar() {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
@@ -986,12 +913,11 @@ void vaciar() {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaAN;
-    private javax.swing.JTextField txtANAnimCod;
-    private javax.swing.JTextField txtANCantNec;
-    private javax.swing.JTextField txtANEstado;
-    private javax.swing.JTextField txtANNutNom;
-    private javax.swing.JTextField verAnimal;
+    private javax.swing.JTable tablaNA;
+    private javax.swing.JTextField txtNAAlimNom;
+    private javax.swing.JTextField txtNACantCon;
+    private javax.swing.JTextField txtNAEstado;
+    private javax.swing.JTextField txtNANutNom;
     private javax.swing.JTextField verMagnitud;
     // End of variables declaration//GEN-END:variables
 }
